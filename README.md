@@ -1,3 +1,5 @@
+> Looking for maintainers! This was originally a fork from another developer who deleted their repository and everything now points to this repository... With that being said, I've since moved on from Capacitor and do not have the bandwidth to maintain this codebase.
+
 # Capacitor Apple Login
 
 [![npm](https://img.shields.io/npm/v/capacitor-apple-login.svg)](https://www.npmjs.com/package/capacitor-apple-login)
