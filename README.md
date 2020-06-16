@@ -1,9 +1,26 @@
-> Looking for maintainers! This was originally a fork from another developer who deleted their repository and everything now points to this repository... With that being said, I've since moved on from Capacitor and do not have the bandwidth to maintain this codebase.
+# Capacitor Sign in With Apple
 
-# Capacitor Apple Login
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-[![npm](https://img.shields.io/npm/v/capacitor-apple-login.svg)](https://www.npmjs.com/package/capacitor-apple-login)
-[![npm](https://img.shields.io/npm/dt/capacitor-apple-login.svg?label=npm%20downloads)](https://www.npmjs.com/package/capacitor-apple-login)
+Capacitor plugin to support [Sign in With Apple](https://developer.apple.com/sign-in-with-apple/get-started/)
+
+<!-- Badges -->
+<a href="https://npmjs.com/package/@capacitor-community/apple-sign-in">
+  <img src="https://img.shields.io/npm/v/@capacitor-community/http.svg">
+</a>
+<a href="https://npmjs.com/package/@capacitor-community/apple-sign-in">
+  <img src="https://img.shields.io/npm/l/@capacitor-community/http.svg">
+</a>
+
+## Maintainers
+
+| Maintainer | GitHub | Social | Sponsoring Company |
+| -----------| -------| -------| -------------------|
+| Max Lynch | [mlynch](https://github.com/mlynch) | [@maxlynch](https://twitter.com/maxlynch) | Ionic |
+
+Maintenance Status: Partially Maintained (help wanted)
 
 ## Installation
 
@@ -16,16 +33,15 @@ import { Plugins } from '@capacitor/core'
 
 const { SignInWithApple } = Plugins
 
-SignInWithApple.Authorize().then(response => {
-  console.log(response)
-}).catch(response => {
-  console.error(response)
-})
+try {
+  const response = await SignInWithApple.Authorize()
+} catch (e) {
+}
 ```
 
 ## Instructions (Android/Web)
 
-The plugin currently works for iOS only. It's made only to pass Apple's new terms. Add the Apple button only after you've checked that the user is on iOS device. If someone wants to implement Android/Web as well - all pull requests will be well welcomed :-)
+The plugin currently works for iOS only. It's made only to pass Apple's new terms. Add the Apple button only after you've checked that the user is on iOS device. Web support is planned for Apple'
 
 ```ts
 const { Device } = Plugins
