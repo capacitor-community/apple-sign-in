@@ -41,7 +41,7 @@ try {
 
 ## Instructions (Android/Web)
 
-The plugin currently works for iOS only. It's made only to pass Apple's new terms. Add the Apple button only after you've checked that the user is on iOS device. Web support is planned for Apple's JS support (help wanted!).
+The plugin currently works for iOS only. It's made only to pass Apple's new terms. Add the Apple button only after you've checked that the user is on iOS device. Web support is planned for Apple's JS support ([help wanted!](https://github.com/capacitor-community/apple-sign-in/issues/1)).
 
 ```ts
 const { Device } = Plugins
