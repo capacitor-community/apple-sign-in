@@ -24,7 +24,7 @@ Maintenance Status: Partially Maintained (help wanted)
 
 ## Installation
 
-- `npm i https://github.com/rlfrahm/capacitor-apple-login`
+- `npm i @capacitor-community/apple-sign-in`
 
 ## Usage (iOS)
 
@@ -41,7 +41,7 @@ try {
 
 ## Instructions (Android/Web)
 
-The plugin currently works for iOS only. It's made only to pass Apple's new terms. Add the Apple button only after you've checked that the user is on iOS device. Web support is planned for Apple'
+The plugin currently works for iOS only. It's made only to pass Apple's new terms. Add the Apple button only after you've checked that the user is on iOS device. Web support is planned for Apple's JS support (help wanted!).
 
 ```ts
 const { Device } = Plugins
