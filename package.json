@@ -1,7 +1,7 @@
 {
-  "name": "capacitor-apple-login",
+  "name": "@capacitor-community/apple-sign-in",
   "version": "0.0.6",
-  "description": "Capacitor Apple Login",
+  "description": "Capacitor Sign in with Apple",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "scripts": {
@@ -18,7 +18,16 @@
   "devDependencies": {
     "typescript": "^3.2.4",
     "@capacitor/ios": "latest",
-    "@capacitor/android": "latest"
+    "@capacitor/android": "latest",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "prettier-plugin-java": "^0.8.0",
+    "pretty-quick": "^2.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "files": [
     "dist/",
