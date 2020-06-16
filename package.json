@@ -33,7 +33,7 @@
     "dist/",
     "ios/",
     "android/",
-    "CapacitorAppleLogin.podspec"
+    "CapacitorAppleSignIn.podspec"
   ],
   "keywords": [
     "capacitor",
@@ -50,9 +50,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/htorbov/capacitor-apple-login"
+    "url": "https://github.com/capacitor-community/apple-sign-in"
   },
   "bugs": {
-    "url": "https://github.com/htorbov/capacitor-apple-login/issues"
+    "url": "https://github.com/capacitor-community/apple-sign-in/issues"
   }
 }
