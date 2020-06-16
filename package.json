@@ -8,9 +8,10 @@
     "build": "npm run clean && tsc",
     "clean": "rm -rf ./dist",
     "watch": "tsc --watch",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "npm-publish": "np"
   },
-  "author": "Hristo Torbov",
+  "author": "Max Lynch <max@ionic.io>",
   "license": "MIT",
   "dependencies": {
     "@capacitor/core": "latest"
@@ -20,6 +21,7 @@
     "@capacitor/ios": "latest",
     "@capacitor/android": "latest",
     "husky": "^4.2.5",
+    "np": "^6.2.3",
     "prettier": "^2.0.5",
     "prettier-plugin-java": "^0.8.0",
     "pretty-quick": "^2.0.1"
