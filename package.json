@@ -35,7 +35,7 @@
     "dist/",
     "ios/",
     "android/",
-    "CapacitorAppleSignIn.podspec"
+    "CapacitorCommunityAppleSignIn.podspec"
   ],
   "keywords": [
     "capacitor",
