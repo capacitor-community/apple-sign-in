@@ -8,10 +8,10 @@ Capacitor plugin to support [Sign in With Apple](https://developer.apple.com/sig
 
 <!-- Badges -->
 <a href="https://npmjs.com/package/@capacitor-community/apple-sign-in">
-  <img src="https://img.shields.io/npm/v/@capacitor-community/http.svg">
+  <img src="https://img.shields.io/npm/v/@capacitor-community/apple-sign-in.svg">
 </a>
 <a href="https://npmjs.com/package/@capacitor-community/apple-sign-in">
-  <img src="https://img.shields.io/npm/l/@capacitor-community/http.svg">
+  <img src="https://img.shields.io/npm/l/@capacitor-community/apple-sign-in.svg">
 </a>
 
 ## Maintainers
