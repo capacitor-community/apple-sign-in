@@ -62,19 +62,18 @@ export class SignInWithAppleWeb extends WebPlugin
   }
 
   private loadAppleScript(callback: any) {
+    if (window && window.AppleID) {
+      return callback();
+    }
+
     const file = document.createElement("script");
     file.setAttribute("type", "text/javascript");
     file.setAttribute(
       "src",
       "https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"
     );
-
-    if (window && !window.AppleID) {
-      file.addEventListener("load", callback);
-      document.getElementsByTagName("head")[0].appendChild(file);
-    } else {
-      callback();
-    }
+    file.addEventListener("load", callback);
+    document.getElementsByTagName("head")[0].appendChild(file);
   }
 }
 
