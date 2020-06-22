@@ -8,8 +8,6 @@ export interface SignInWithApplePlugin {
   Init(options: InitOptions): Promise<void>;
 
   Authorize(): Promise<{ response: any }>;
-
-  SignIn(): Promise<void>;
 }
 
 export interface InitOptions {

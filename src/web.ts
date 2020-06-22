@@ -13,14 +13,6 @@ export class SignInWithAppleWeb extends WebPlugin
     });
   }
 
-  async SignIn(): Promise<void> {
-    if (window && window.AppleID) {
-      return await window.AppleID.auth.signIn();
-    }
-
-    return;
-  }
-
   async Init(options: InitOptions): Promise<void> {
     this.loadAppleScript(() => {
       if (window && window.AppleID) {
@@ -38,7 +30,13 @@ export class SignInWithAppleWeb extends WebPlugin
   }
 
   async Authorize(): Promise<{ response: any }> {
-    return await window.AppleID.auth.signIn();
+    try {
+      if (window && window.AppleID) {
+        return await window.AppleID.auth.signIn();
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   private loadAppleScript(callback: any) {
