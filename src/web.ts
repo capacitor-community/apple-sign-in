@@ -13,9 +13,17 @@ export class SignInWithAppleWeb extends WebPlugin
     });
   }
 
+  async SignIn(): Promise<void> {
+    if (window && window.AppleID) {
+      return await window.AppleID.auth.signIn();
+    }
+
+    return;
+  }
+
   async Init(options: InitOptions): Promise<void> {
     this.loadAppleScript(() => {
-      if (!!window && !!window.AppleID) {
+      if (window && window.AppleID) {
         const { clientId, scope, redirectURI, state, usePopup } = options;
 
         window.AppleID.auth.init({
