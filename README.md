@@ -61,6 +61,11 @@ try {
 ## Instructions (Web)
 
 ```ts
+import {
+  SignInResponse,
+  SignInError,
+} from "@capacitor-community/apple-sign-in";
+
 const { Device } = Plugins;
 
 let device = await Device.getInfo();
@@ -76,7 +81,13 @@ if (device.platform === "web") {
   });
 
   // Trigger Sign in manually with an action, e.g. custom button
-  SignInWithApple.SignIn();
+  SignInWithApple.Authorize()
+    .then((response: SignInResponse) => {
+      console.log(response);
+    })
+    .catch((error: SignInError) => {
+      console.error(error);
+    });
 
   // or
 

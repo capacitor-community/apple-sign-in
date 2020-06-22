@@ -11,6 +11,8 @@ declare var window: any;
 
 export class SignInWithAppleWeb extends WebPlugin
   implements SignInWithApplePlugin {
+  hasInitialized = false;
+
   constructor() {
     super({
       name: "SignInWithApple",
@@ -20,7 +22,7 @@ export class SignInWithAppleWeb extends WebPlugin
 
   async Init(options: InitOptions): Promise<void> {
     this.loadAppleScript(() => {
-      if (window && window.AppleID) {
+      if (window && window.AppleID && !this.hasInitialized) {
         const { clientId, scope, redirectURI, state, usePopup } = options;
 
         window.AppleID.auth.init({
@@ -30,18 +32,33 @@ export class SignInWithAppleWeb extends WebPlugin
           state: state,
           usePopup: usePopup !== undefined ? usePopup : false,
         });
+
+        this.hasInitialized = true;
       }
     });
   }
 
-  async Authorize(): Promise<SignInResponse> {
-    try {
-      if (window && window.AppleID) {
-        return await window.AppleID.auth.signIn();
+  Authorize(): Promise<SignInResponse> {
+    return new Promise<SignInResponse>(async (resolve, reject) => {
+      try {
+        if (window && window.AppleID) {
+          if (this.hasInitialized) {
+            const response: SignInResponse = await window.AppleID.auth.signIn();
+            resolve(response);
+          } else {
+            reject({
+              error: "AppleID has not yet initialized",
+            } as SignInError);
+          }
+        } else {
+          reject({
+            error: "Cannot find AppleID instance",
+          } as SignInError);
+        }
+      } catch (error) {
+        reject(error as SignInError);
       }
-    } catch (error) {
-      throw new Error(error);
-    }
+    });
   }
 
   private loadAppleScript(callback: any) {
