@@ -1,5 +1,5 @@
 import { WebPlugin } from '@capacitor/core';
-import { SignInWithApplePlugin } from './definitions';
+import { SignInWithApplePlugin, ResponseSignInWithApplePlugin } from './definitions';
 
 export class SignInWithAppleWeb extends WebPlugin implements SignInWithApplePlugin {
   constructor() {
@@ -9,7 +9,7 @@ export class SignInWithAppleWeb extends WebPlugin implements SignInWithApplePlug
     });
   }
 
-  async Authorize(): Promise<{response: any}> {
+  async Authorize(): Promise<ResponseSignInWithApplePlugin> {
     return;
   }
 }
