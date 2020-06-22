@@ -1,6 +1,11 @@
 import { WebPlugin } from "@capacitor/core";
 
-import { SignInWithApplePlugin, InitOptions } from "./definitions";
+import {
+  SignInWithApplePlugin,
+  InitOptions,
+  SignInResponse,
+  SignInError,
+} from "./definitions";
 
 declare var window: any;
 
@@ -29,7 +34,7 @@ export class SignInWithAppleWeb extends WebPlugin
     });
   }
 
-  async Authorize(): Promise<{ response: any }> {
+  async Authorize(): Promise<SignInResponse> {
     try {
       if (window && window.AppleID) {
         return await window.AppleID.auth.signIn();
@@ -46,8 +51,13 @@ export class SignInWithAppleWeb extends WebPlugin
       "src",
       "https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"
     );
-    file.addEventListener("load", callback);
-    document.getElementsByTagName("head")[0].appendChild(file);
+
+    if (window && !window.AppleID) {
+      file.addEventListener("load", callback);
+      document.getElementsByTagName("head")[0].appendChild(file);
+    } else {
+      callback();
+    }
   }
 }
 
