@@ -40,21 +40,19 @@ export class SignInWithAppleWeb extends WebPlugin
 
   Authorize(): Promise<SignInResponse> {
     return new Promise<SignInResponse>(async (resolve, reject) => {
+      const buildReject = (error: string) => reject({ error } as SignInError);
+
       try {
-        if (window && window.AppleID) {
-          if (this.hasInitialized) {
-            const response: SignInResponse = await window.AppleID.auth.signIn();
-            resolve(response);
-          } else {
-            reject({
-              error: "AppleID has not yet initialized",
-            } as SignInError);
-          }
-        } else {
-          reject({
-            error: "Cannot find AppleID instance",
-          } as SignInError);
+        if (window && !window.AppleID) {
+          buildReject("Cannot find AppleID instance");
         }
+
+        if (!this.hasInitialized) {
+          buildReject("AppleID has not yet initialized");
+        }
+
+        const response: SignInResponse = await window.AppleID.auth.signIn();
+        resolve(response);
       } catch (error) {
         reject(error as SignInError);
       }
