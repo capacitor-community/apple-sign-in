@@ -11,11 +11,11 @@ declare var window: any;
 
 export class SignInWithAppleWeb extends WebPlugin
   implements SignInWithApplePlugin {
-  public ready: Promise<any>;
+  public readonly ready: Promise<any>;
   private readyResolver: Function;
-  private hasInitialised = false;
-
-  private APPLE_SCRIPT_KEY = "apple_signin_script";
+  private key = "apple_signin_script";
+  private src =
+    "https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js";
 
   constructor() {
     super({
@@ -24,85 +24,53 @@ export class SignInWithAppleWeb extends WebPlugin
     });
 
     this.ready = new Promise((resolve) => (this.readyResolver = resolve));
-    this.init();
-  }
-
-  async init() {
-    await this.loadAppleScript();
-    this.readyResolver();
-    console.log("ready");
+    this.configure();
   }
 
   async Init(options: InitOptions): Promise<void> {
-    const interval = setInterval(() => {
-      if (this.hasInitialised) {
-        return;
-      }
+    await this.ready;
+    window.AppleID.auth.init(options);
+  }
 
+  async Authorize(): Promise<SignInResponse> {
+    try {
+      await this.ready;
+      return await window.AppleID.auth.signIn();
+    } catch (error) {
+      throw error as SignInError;
+    }
+  }
+
+  private async configure() {
+    try {
+      await this.loadAppleScript();
+    } catch (error) {
+      throw error;
+    }
+
+    const interval = setInterval(() => {
       if (!window.AppleID) {
         return;
       }
 
-      const { clientId, scope, redirectURI, state, usePopup } = options;
-
-      window.AppleID.auth.init({
-        clientId: clientId,
-        scope: scope,
-        redirectURI: redirectURI,
-        state: state,
-        usePopup: usePopup !== undefined ? usePopup : false,
-      });
-
-      this.hasInitialised = true;
-
       clearInterval(interval);
+      this.readyResolver();
     }, 50);
-  }
-
-  Authorize(): Promise<SignInResponse> {
-    return new Promise<SignInResponse>((resolve, reject) => {
-      const buildReject = (error: string) => reject({ error } as SignInError);
-
-      const interval = setInterval(async () => {
-        if (window && !window.AppleID) {
-          buildReject("Cannot find AppleID instance");
-          return;
-        }
-
-        if (!this.hasInitialised) {
-          buildReject("AppleID has not yet initialized");
-          return;
-        }
-
-        try {
-          const response: SignInResponse = await window.AppleID.auth.signIn();
-          resolve(response);
-        } catch (error) {
-          reject(error as SignInError);
-        }
-
-        clearInterval(interval);
-      }, 50);
-    });
   }
 
   private loadAppleScript() {
     return new Promise((resolve, reject) => {
-      if (
-        (window && window.AppleID) ||
-        document.getElementById(this.APPLE_SCRIPT_KEY)
-      ) {
+      if (document.getElementById(this.key)) {
         return resolve();
       }
 
       const file = document.createElement("script");
       file.type = "text/javascript";
-      file.src =
-        "https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js";
-      file.id = this.APPLE_SCRIPT_KEY;
+      file.src = this.src;
+      file.id = this.key;
       file.onload = resolve;
       file.onerror = reject;
-      document.getElementsByTagName("head")[0].appendChild(file);
+      document.querySelector("head").appendChild(file);
     });
   }
 }
