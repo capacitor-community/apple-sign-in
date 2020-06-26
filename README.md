@@ -30,11 +30,12 @@ Maintenance Status: Partially Maintained (help wanted)
 
 ```ts
 import { Plugins } from '@capacitor/core'
+import { ResponseSignInWithApplePlugin } from '@capacitor-community/apple-sign-in';
 
 const { SignInWithApple } = Plugins
 
 try {
-  const response = await SignInWithApple.Authorize()
+  const response: ResponseSignInWithApplePlugin = await SignInWithApple.Authorize()
 } catch (e) {
 }
 ```
