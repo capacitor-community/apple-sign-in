@@ -7,7 +7,7 @@ declare module "@capacitor/core" {
 export interface SignInWithApplePlugin {
   Init(options: InitOptions): Promise<void>;
 
-  Authorize(): Promise<SignInResponse>;
+  Authorize(): Promise<ResponseSignInWithApplePlugin>;
 }
 
 export interface InitOptions {
@@ -16,11 +16,6 @@ export interface InitOptions {
   redirectURI: string;
   state: string;
   usePopup: boolean;
-}
-
-export interface SignInResponse {
-  user: User;
-  authorization: Authorization;
 }
 
 export interface SignInError {
@@ -41,4 +36,17 @@ export interface User {
 export interface Name {
   firstName: string;
   lastName: string;
+}
+
+export interface ResponseSignInWithApplePlugin {
+  response: {
+    user: string;
+    email: string;
+    givenName: string;
+    familyName: string;
+    identityToken: string;
+    authorizationCode: string;
+  };
+  user: User;
+  authorization: Authorization;
 }

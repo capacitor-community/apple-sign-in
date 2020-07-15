@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "rdlabo",
+      "name": "Masahiko Sakakibara",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/9690024?v=4",
+      "profile": "https://rdlabo.jp",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "apple-sign-in",
+  "projectOwner": "capacitor-community",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
