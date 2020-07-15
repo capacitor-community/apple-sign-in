@@ -3,7 +3,7 @@ import { WebPlugin } from "@capacitor/core";
 import {
   SignInWithApplePlugin,
   InitOptions,
-  SignInResponse,
+  ResponseSignInWithApplePlugin,
   SignInError,
 } from "./definitions";
 
@@ -32,7 +32,7 @@ export class SignInWithAppleWeb extends WebPlugin
     window.AppleID.auth.init(options);
   }
 
-  async Authorize(): Promise<SignInResponse> {
+  async Authorize(): Promise<ResponseSignInWithApplePlugin> {
     try {
       await this.ready;
       return await window.AppleID.auth.signIn();
