@@ -11,10 +11,10 @@ export interface SignInWithApplePlugin {
 export interface ResponseSignInWithApplePlugin {
   response: {
     user: string;
-    email: string;
-    givenName: string;
-    familyName: string;
+    email: string | null;
+    givenName: string | null;
+    familyName: string | null;
     identityToken: string;
     authorizationCode: string;
-  }
+  };
 }
