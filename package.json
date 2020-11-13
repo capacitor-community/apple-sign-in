@@ -1,6 +1,6 @@
 {
   "name": "@no-dap/apple-sign-in",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Forked package for Capacitor Sign in with Apple",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",

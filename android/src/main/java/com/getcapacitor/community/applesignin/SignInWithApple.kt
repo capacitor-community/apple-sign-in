@@ -5,10 +5,13 @@ import com.getcapacitor.*
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 
-@NativePlugin
+@NativePlugin(
+        requestCodes = [4200]
+)
 class SignInWithApple : Plugin() {
     private var baseAuthURL = "https://appleid.apple.com/auth/authorize"
     private var activityResultCode = ActivityResultCode()
+    private var requestCode = 4200
 
     @PluginMethod
     @Throws(UnsupportedEncodingException::class)
@@ -25,7 +28,7 @@ class SignInWithApple : Plugin() {
         val intent = Intent(context, LoginActivity::class.java)
         intent.putExtra("APPLE_OAUTH_URL", appleAuthURL)
         intent.putExtra("REDIRECT_URI", redirectURI)
-        startActivityForResult(call, intent, activityResultCode.SUCCESS_RESULT)
+        startActivityForResult(call, intent, requestCode)
     }
 
     override fun handleOnActivityResult(
@@ -34,16 +37,18 @@ class SignInWithApple : Plugin() {
             data: Intent
     ) {
         super.handleOnActivityResult(requestCode, resultCode, data)
-        if (resultCode == activityResultCode.SUCCESS_RESULT) {
-            val token = data.getStringExtra("token")
-            val savedCall = savedCall ?: return
-            val ret = JSObject()
-            ret.put("value", token)
-            savedCall.success(ret)
-        } else if (resultCode == activityResultCode.ERROR_RESULT) {
-            val errorMessage = data.getStringExtra("error")
-            val savedCall = savedCall ?: return
-            savedCall.reject(errorMessage)
+        if (requestCode == this.requestCode) {
+            if (resultCode == activityResultCode.SUCCESS_RESULT) {
+                val token = data.getStringExtra("token")
+                val savedCall = savedCall ?: return
+                val ret = JSObject()
+                ret.put("value", token)
+                savedCall.success(ret)
+            } else if (resultCode == activityResultCode.ERROR_RESULT) {
+                val errorMessage = data.getStringExtra("error")
+                val savedCall = savedCall ?: return
+                savedCall.reject(errorMessage)
+            }
         }
     }
 }
