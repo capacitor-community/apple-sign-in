@@ -33,10 +33,16 @@ class SignInWithApple : Plugin() {
             data: Intent
     ) {
         super.handleOnActivityResult(requestCode, resultCode, data)
-        val token = data.getStringExtra("token")
-        val savedCall = savedCall ?: return
-        val ret = JSObject()
-        ret.put("value", token)
-        savedCall.success(ret)
+        if (resultCode == 0) {
+            val token = data.getStringExtra("token")
+            val savedCall = savedCall ?: return
+            val ret = JSObject()
+            ret.put("value", token)
+            savedCall.success(ret)
+        } else if (resultCode == 1) {
+            val errorMessage = data.getStringExtra("error")
+            val savedCall = savedCall ?: return
+            savedCall.reject(errorMessage)
+        }
     }
 }

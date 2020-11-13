@@ -9,4 +9,8 @@ open class JavaScriptInterface(private var loginActivity: LoginActivity, protect
         loginActivity.onSuccess(token)
     }
 
+    @JavascriptInterface
+    fun onError(error: String?) {
+        loginActivity.onFailed(error)
+    }
 }

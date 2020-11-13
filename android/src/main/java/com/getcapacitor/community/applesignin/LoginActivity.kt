@@ -28,7 +28,11 @@ class LoginActivity : Activity() {
         finish()
     }
 
-    fun onFailed() {
+    fun onFailed(error: String?) {
         println("Login failed")
+        val intent = Intent()
+        intent.putExtra("error", error)
+        setResult(1, intent)
+        finish()
     }
 }
