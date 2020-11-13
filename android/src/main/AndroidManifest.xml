@@ -1,5 +1,13 @@
 
   <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
       package="com.getcapacitor.community.applesignin.applesignin">
+    <application>
+      <activity
+          android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+          android:name="com.getcapacitor.community.applesignin.LoginActivity"
+          tools:ignore="WrongManifestParent">
+      </activity>
+    </application>
   </manifest>
   
