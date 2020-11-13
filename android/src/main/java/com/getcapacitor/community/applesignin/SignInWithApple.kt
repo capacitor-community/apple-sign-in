@@ -6,12 +6,14 @@ import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 
 @NativePlugin(
-        requestCodes = [4200]
+        requestCodes = [SignInWithApple.requestCode]
 )
 class SignInWithApple : Plugin() {
     private var baseAuthURL = "https://appleid.apple.com/auth/authorize"
     private var activityResultCode = ActivityResultCode()
-    private var requestCode = 4200
+    companion object {
+        const val requestCode = 4200
+    }
 
     @PluginMethod
     @Throws(UnsupportedEncodingException::class)
@@ -37,7 +39,7 @@ class SignInWithApple : Plugin() {
             data: Intent
     ) {
         super.handleOnActivityResult(requestCode, resultCode, data)
-        if (requestCode == this.requestCode) {
+        if (requestCode == SignInWithApple.requestCode) {
             if (resultCode == activityResultCode.SUCCESS_RESULT) {
                 val token = data.getStringExtra("token")
                 val savedCall = savedCall ?: return
