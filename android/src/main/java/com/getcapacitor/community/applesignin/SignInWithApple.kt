@@ -8,6 +8,7 @@ import java.net.URLEncoder
 @NativePlugin
 class SignInWithApple : Plugin() {
     private var baseAuthURL = "https://appleid.apple.com/auth/authorize"
+    private var activityResultCode = ActivityResultCode()
 
     @PluginMethod
     @Throws(UnsupportedEncodingException::class)
@@ -24,7 +25,7 @@ class SignInWithApple : Plugin() {
         val intent = Intent(context, LoginActivity::class.java)
         intent.putExtra("APPLE_OAUTH_URL", appleAuthURL)
         intent.putExtra("REDIRECT_URI", redirectURI)
-        startActivityForResult(call, intent, 0)
+        startActivityForResult(call, intent, activityResultCode.SUCCESS_RESULT)
     }
 
     override fun handleOnActivityResult(
@@ -33,13 +34,13 @@ class SignInWithApple : Plugin() {
             data: Intent
     ) {
         super.handleOnActivityResult(requestCode, resultCode, data)
-        if (resultCode == 0) {
+        if (resultCode == activityResultCode.SUCCESS_RESULT) {
             val token = data.getStringExtra("token")
             val savedCall = savedCall ?: return
             val ret = JSObject()
             ret.put("value", token)
             savedCall.success(ret)
-        } else if (resultCode == 1) {
+        } else if (resultCode == activityResultCode.ERROR_RESULT) {
             val errorMessage = data.getStringExtra("error")
             val savedCall = savedCall ?: return
             savedCall.reject(errorMessage)

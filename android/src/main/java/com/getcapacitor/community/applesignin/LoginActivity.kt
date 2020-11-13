@@ -5,10 +5,11 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.webkit.WebView
-import android.webkit.WebViewClient
 import com.getcapacitor.community.applesignin.applesignin.R
 
 class LoginActivity : Activity() {
+    private var activityResultCode = ActivityResultCode()
+
     @SuppressLint("SetJavaScriptEnabled")
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +25,7 @@ class LoginActivity : Activity() {
         println("Login success")
         val intent = Intent()
         intent.putExtra("token", token)
-        setResult(0, intent)
+        setResult(activityResultCode.SUCCESS_RESULT, intent)
         finish()
     }
 
@@ -32,7 +33,7 @@ class LoginActivity : Activity() {
         println("Login failed")
         val intent = Intent()
         intent.putExtra("error", error)
-        setResult(1, intent)
+        setResult(activityResultCode.ERROR_RESULT, intent)
         finish()
     }
 }
