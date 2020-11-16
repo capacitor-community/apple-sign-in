@@ -5,8 +5,8 @@ import android.webkit.WebView
 
 open class JavaScriptInterface(private var loginActivity: LoginActivity, protected var webView: WebView) {
     @JavascriptInterface
-    fun setToken(token: String?) {
-        loginActivity.onSuccess(token)
+    fun setResult(result: String?) {
+        loginActivity.onSuccess(result)
     }
 
     @JavascriptInterface

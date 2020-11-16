@@ -18,13 +18,13 @@ class LoginActivity : Activity() {
         val webView = findViewById<WebView>(R.id.webview)
         webView.settings.javaScriptEnabled = true
         webView.loadUrl(appleAuthenticationURL)
-        webView.addJavascriptInterface(JavaScriptInterface(this, webView), "tokenHandler")
+        webView.addJavascriptInterface(JavaScriptInterface(this, webView), "responseHandler")
     }
 
-    fun onSuccess(token: String?) {
+    fun onSuccess(result: String?) {
         println("Login success")
         val intent = Intent()
-        intent.putExtra("token", token)
+        intent.putExtra("result", result)
         setResult(activityResultCode.SUCCESS_RESULT, intent)
         finish()
     }
