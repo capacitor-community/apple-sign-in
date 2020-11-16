@@ -4,6 +4,7 @@ import android.content.Intent
 import com.getcapacitor.*
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
+import kotlin.jvm.Throws
 
 @NativePlugin(
         requestCodes = [SignInWithApple.requestCode]
@@ -46,16 +47,19 @@ class SignInWithApple : Plugin() {
     ) {
         super.handleOnActivityResult(requestCode, resultCode, data)
         if (requestCode == SignInWithApple.requestCode) {
-            if (resultCode == activityResultCode.SUCCESS_RESULT) {
-                val authenticationResult = data.getStringExtra("result")
-                val savedCall = savedCall ?: return
-                val ret = JSObject()
-                ret.put("value", authenticationResult)
-                savedCall.success(ret)
-            } else if (resultCode == activityResultCode.ERROR_RESULT) {
-                val errorMessage = data.getStringExtra("error")
-                val savedCall = savedCall ?: return
-                savedCall.reject(errorMessage)
+            val savedCall = savedCall ?: return
+            when (resultCode) {
+                activityResultCode.SUCCESS_RESULT -> {
+                    val token = data.getStringExtra("token")
+                    val ret = JSObject()
+                    ret.put("value", token)
+                    savedCall.success(ret)
+                }
+                activityResultCode.ERROR_RESULT, activityResultCode.USER_CANCELED -> {
+                    val errorMessage = data.getStringExtra("error")
+                    val errorCode = data.getStringExtra("code")
+                    savedCall.reject(errorMessage, errorCode)
+                }
             }
         }
     }

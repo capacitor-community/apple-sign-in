@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.webkit.WebView
 import com.getcapacitor.community.applesignin.applesignin.R
 
@@ -21,19 +22,35 @@ class LoginActivity : Activity() {
         webView.addJavascriptInterface(JavaScriptInterface(this, webView), "responseHandler")
     }
 
+    private fun setResult(data: String?, code: Int) {
+        val intent = Intent()
+        when (code) {
+            activityResultCode.SUCCESS_RESULT -> {
+                intent.putExtra("token", data)
+            }
+            else -> {
+                intent.putExtra("error", data)
+            }
+        }
+        intent.putExtra("code", code)
+        setResult(code, intent)
+        finish()
+    }
+
     fun onSuccess(result: String?) {
         println("Login success")
-        val intent = Intent()
-        intent.putExtra("result", result)
-        setResult(activityResultCode.SUCCESS_RESULT, intent)
-        finish()
+        this.setResult(result, activityResultCode.SUCCESS_RESULT)
     }
 
     fun onFailed(error: String?) {
         println("Login failed")
-        val intent = Intent()
-        intent.putExtra("error", error)
-        setResult(activityResultCode.ERROR_RESULT, intent)
-        finish()
+        this.setResult(error, activityResultCode.ERROR_RESULT)
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            this.setResult("user canceled", activityResultCode.USER_CANCELED)
+        }
+        return super.onKeyDown(keyCode, event)
     }
 }
