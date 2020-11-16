@@ -1,7 +1,7 @@
 {
-  "name": "@no-dap/apple-sign-in",
-  "version": "0.1.1",
-  "description": "Forked package for Capacitor Sign in with Apple",
+  "name": "@capacitor-community/apple-sign-in",
+  "version": "0.0.12",
+  "description": "Capacitor Sign in with Apple",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "scripts": {
@@ -11,7 +11,7 @@
     "prepublishOnly": "npm run build",
     "npm-publish": "np"
   },
-  "author": "no-dap <somniholic@naver.com>",
+  "author": "Max Lynch <max@ionic.io>",
   "license": "MIT",
   "dependencies": {
     "@capacitor/core": "latest"
@@ -52,9 +52,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/no-dap/apple-sign-in"
+    "url": "https://github.com/capacitor-community/apple-sign-in"
   },
   "bugs": {
-    "url": "https://github.com/no-dap/apple-sign-in/issues"
+    "url": "https://github.com/capacitor-community/apple-sign-in/issues"
   }
 }
