@@ -5,10 +5,20 @@ declare module "@capacitor/core" {
 }
 
 export interface SignInWithApplePlugin {
-  Authorize(): Promise<ResponseSignInWithApplePlugin>;
+  authorize(
+    options?: SignInWithAppleOptions
+  ): Promise<SignInWithApplePluginResponse>;
 }
 
-export interface ResponseSignInWithApplePlugin {
+export interface SignInWithAppleOptions {
+  clientId: string;
+  redirectURI: string;
+  scope?: string;
+  state?: string;
+  nonce?: string;
+}
+
+export interface SignInWithApplePluginResponse {
   response: {
     user: string;
     email: string | null;
