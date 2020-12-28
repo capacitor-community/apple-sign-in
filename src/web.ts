@@ -1,13 +1,14 @@
 import { WebPlugin } from "@capacitor/core";
 import {
   SignInWithApplePlugin,
-  SignInWithApplePluginResponse,
+  SignInWithAppleResponse,
   SignInWithAppleOptions,
 } from "./definitions";
 
 declare let AppleID: any;
 
-export class SignInWithAppleWeb extends WebPlugin
+export class SignInWithAppleWeb
+  extends WebPlugin
   implements SignInWithApplePlugin {
   private appleScriptUrl =
     "https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js";
@@ -22,7 +23,7 @@ export class SignInWithAppleWeb extends WebPlugin
 
   async authorize(
     options?: SignInWithAppleOptions
-  ): Promise<SignInWithApplePluginResponse> {
+  ): Promise<SignInWithAppleResponse> {
     return new Promise(async (resolve, reject) => {
       if (options) {
         this.isAppleScriptLoaded = await this.loadSignInWithAppleJS();
@@ -40,7 +41,7 @@ export class SignInWithAppleWeb extends WebPlugin
           AppleID.auth
             .signIn()
             .then((res: any) => {
-              let response: SignInWithApplePluginResponse = {
+              let response: SignInWithAppleResponse = {
                 response: {
                   user: null,
                   email: res.user?.email,
