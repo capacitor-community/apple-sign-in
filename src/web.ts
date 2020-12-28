@@ -7,8 +7,7 @@ import {
 
 declare let AppleID: any;
 
-export class SignInWithAppleWeb
-  extends WebPlugin
+export class SignInWithAppleWeb extends WebPlugin
   implements SignInWithApplePlugin {
   private appleScriptUrl =
     "https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js";
@@ -32,7 +31,7 @@ export class SignInWithAppleWeb
           AppleID.auth.init({
             clientId: options.clientId,
             redirectURI: options.redirectURI,
-            scope: options.scope ?? "name email",
+            scope: options.scopes ?? "name email",
             state: options.state ?? undefined,
             nonce: options.nonce ?? undefined,
             usePopup: true,

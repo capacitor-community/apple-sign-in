@@ -11,7 +11,7 @@ export interface SignInWithApplePlugin {
 export interface SignInWithAppleOptions {
   clientId: string;
   redirectURI: string;
-  scope?: string;
+  scopes?: string;
   state?: string;
   nonce?: string;
 }
