@@ -1,10 +1,15 @@
 # Capacitor Sign in With Apple
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Capacitor plugin to support [Sign in With Apple](https://developer.apple.com/sign-in-with-apple/get-started/)
@@ -19,42 +24,102 @@ Capacitor plugin to support [Sign in With Apple](https://developer.apple.com/sig
 
 ## Maintainers
 
-| Maintainer | GitHub | Social | Sponsoring Company |
-| -----------| -------| -------| -------------------|
-| Max Lynch | [mlynch](https://github.com/mlynch) | [@maxlynch](https://twitter.com/maxlynch) | Ionic |
+| Maintainer | GitHub                              | Social                                    | Sponsoring Company |
+| ---------- | ----------------------------------- | ----------------------------------------- | ------------------ |
+| Max Lynch  | [mlynch](https://github.com/mlynch) | [@maxlynch](https://twitter.com/maxlynch) | Ionic              |
 
 Maintenance Status: Partially Maintained (help wanted)
 
 ## Installation
 
-- `npm i @capacitor-community/apple-sign-in`
+To use npm
+
+```bash
+npm install @capacitor-community/apple-sign-in
+```
+
+To use yarn
+
+```bash
+yarn add @capacitor-community/apple-sign-in
+```
+
+Sync native files
+
+```bash
+npx cap sync
+```
 
 ## Usage (iOS)
 
 ```ts
-import { Plugins } from '@capacitor/core'
-import { ResponseSignInWithApplePlugin } from '@capacitor-community/apple-sign-in';
+import { Plugins } from "@capacitor/core";
+import { ResponseSignInWithApplePlugin } from "@capacitor-community/apple-sign-in";
 
-const { SignInWithApple } = Plugins
+const { SignInWithApple } = Plugins;
 
 try {
-  const response: ResponseSignInWithApplePlugin = await SignInWithApple.Authorize()
+  const response: ResponseSignInWithApplePlugin = await SignInWithApple.Authorize();
 } catch (e) {
+  console.error(e);
 }
 ```
 
-## Instructions (Android/Web)
-
-The plugin currently works for iOS only. It's made only to pass Apple's new terms. Add the Apple button only after you've checked that the user is on iOS device. Web support is planned for Apple's JS support ([help wanted!](https://github.com/capacitor-community/apple-sign-in/issues/1)).
+## Instructions (Web)
 
 ```ts
-const { Device } = Plugins
+import {
+  SignInResponse,
+  SignInError,
+} from "@capacitor-community/apple-sign-in";
 
-let device = await Device.getInfo()
+const { Device } = Plugins;
 
-if (device.platform === 'ios') {
-  // Show the button with SignInWithApple.Authorize()
+let device = await Device.getInfo();
+
+if (device.platform === "web") {
+  // Configure and initialize the plugin with correct values
+  SignInWithApple.Init({
+    clientId: "[CLIENT_ID]",
+    scope: "[SCOPES]", // scope=name email
+    redirectURI: "[REDIRECT_URI]",
+    state: "[STATE]",
+    usePopup: true, //or false defaults to false
+  });
+
+  // Trigger Sign in manually with an action, e.g. custom button
+  SignInWithApple.Authorize()
+    .then((response: SignInResponse) => {
+      console.log(response);
+    })
+    .catch((error: SignInError) => {
+      console.error(error);
+    });
+
+  // or
+
+  // Use default apple button style by adding div
+  <div
+    id="appleid-signin"
+    data-color="black"
+    data-border="true"
+    data-type="sign in"
+  ></div>;
 }
+```
+
+Authorization callback listeners can be configured by adding **AppleIDSignInOnSuccess** and **AppleIDSignInOnFailure**
+
+```ts
+//Listen for authorization success
+document.addEventListener("AppleIDSignInOnSuccess", (data) => {
+  console.log(data);
+});
+
+//Listen for authorization failures
+document.addEventListener("AppleIDSignInOnFailure", (error) => {
+  console.error(error);
+});
 ```
 
 ## Contributors ✨
@@ -72,6 +137,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
