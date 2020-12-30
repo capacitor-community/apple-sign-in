@@ -70,7 +70,7 @@ export class SignInWithAppleWeb extends WebPlugin
       file.id = this.key;
       file.onload = resolve;
       file.onerror = reject;
-      document.querySelector("head").appendChild(file);
+      document.head.appendChild(file);
     });
   }
 }
