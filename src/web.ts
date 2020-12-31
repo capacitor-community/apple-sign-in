@@ -9,7 +9,8 @@ import {
 
 declare var window: any;
 
-export class SignInWithAppleWeb extends WebPlugin
+export class SignInWithAppleWeb
+  extends WebPlugin
   implements SignInWithApplePlugin {
   public readonly ready: Promise<any>;
   private readyResolver: Function;
@@ -27,12 +28,16 @@ export class SignInWithAppleWeb extends WebPlugin
     this.configure();
   }
 
-  async Init(options: InitOptions): Promise<void> {
+  async init(options: InitOptions): Promise<void> {
     await this.ready;
-    window.AppleID.auth.init(options);
+    if (window.AppleID && window.AppleID.auth) {
+      window.AppleID.auth.init(options);
+    } else {
+      throw TypeError("window.AppleID is absent while expecting to be present");
+    }
   }
 
-  async Authorize(): Promise<ResponseSignInWithWebPlugin> {
+  async authorize(): Promise<ResponseSignInWithWebPlugin> {
     try {
       await this.ready;
       return await window.AppleID.auth.signIn();
@@ -48,21 +53,15 @@ export class SignInWithAppleWeb extends WebPlugin
       throw error;
     }
 
-    const interval = setInterval(() => {
-      if (!window.AppleID) {
-        return;
-      }
-
-      clearInterval(interval);
-      this.readyResolver();
-    }, 50);
+    if (!window.AppleID) {
+      throw TypeError("window.AppleID is absent while expecting to be present");
+    }
+    this.readyResolver();
   }
 
   private loadAppleScript() {
     return new Promise((resolve, reject) => {
-      if (document.getElementById(this.key)) {
-        return resolve();
-      }
+      if (document.getElementById(this.key) && window.AppleID) return resolve();
 
       const file = document.createElement("script");
       file.type = "text/javascript";

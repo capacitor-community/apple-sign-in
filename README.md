@@ -59,13 +59,15 @@ import { ResponseSignInWithApplePlugin } from "@capacitor-community/apple-sign-i
 const { SignInWithApple } = Plugins;
 
 try {
-  const response: ResponseSignInWithApplePlugin = await SignInWithApple.Authorize();
+  const response: ResponseSignInWithApplePlugin = await SignInWithApple.authorize();
 } catch (e) {
   console.error(e);
 }
 ```
 
-## Instructions (Web)
+## Usage (Web)
+
+1. Initialize the plugin
 
 ```ts
 import {
@@ -79,34 +81,36 @@ let device = await Device.getInfo();
 
 if (device.platform === "web") {
   // Configure and initialize the plugin with correct values
-  SignInWithApple.Init({
+  SignInWithApple.init({
     clientId: "[CLIENT_ID]",
     scope: "[SCOPES]", // scope=name email
     redirectURI: "[REDIRECT_URI]",
     state: "[STATE]",
     usePopup: true, //or false defaults to false
   });
-
-  // Trigger Sign in manually with an action, e.g. custom button
-  SignInWithApple.Authorize()
-    .then((response: SignInResponse) => {
-      console.log(response);
-    })
-    .catch((error: SignInError) => {
-      console.error(error);
-    });
-
-  // or
-
-  // Use default apple button style by adding div
-  <div
-    id="appleid-signin"
-    data-color="black"
-    data-border="true"
-    data-type="sign in"
-  ></div>;
 }
 ```
+
+2. Call the plugin when need to authorize user. You can either...
+   - Request to Sign in programically
+   ```ts
+   SignInWithApple.authorize()
+     .then((response: SignInResponse) => {
+       console.log(response);
+     })
+     .catch((error: SignInError) => {
+       console.error(error);
+     });
+   ```
+   - Or, use the default apple button style by adding the HTML below to your desired location of where the login button would appear
+   ```html
+   <div
+     id="appleid-signin"
+     data-color="black"
+     data-border="true"
+     data-type="sign in"
+   ></div>
+   ```
 
 Authorization callback listeners can be configured by adding **AppleIDSignInOnSuccess** and **AppleIDSignInOnFailure**
 

@@ -10,7 +10,7 @@ import AuthenticationServices
 public class SignInWithApple: CAPPlugin {
     var call: CAPPluginCall?
 
-    @objc func Authorize(_ call: CAPPluginCall) {
+    @objc func authorize(_ call: CAPPluginCall) {
         self.call = call
 
         if #available(iOS 13.0, *) {

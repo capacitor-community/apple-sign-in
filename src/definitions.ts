@@ -5,9 +5,9 @@ declare module "@capacitor/core" {
 }
 
 export interface SignInWithApplePlugin {
-  Init(options: InitOptions): Promise<void>;
+  init(options: InitOptions): Promise<void>;
 
-  Authorize(): Promise<
+  authorize(): Promise<
     ResponseSignInWithApplePlugin | ResponseSignInWithWebPlugin
   >;
 }
