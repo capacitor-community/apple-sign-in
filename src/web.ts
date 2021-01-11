@@ -31,7 +31,7 @@ export class SignInWithAppleWeb extends WebPlugin
           AppleID.auth.init({
             clientId: options.clientId,
             redirectURI: options.redirectURI,
-            scope: options.scopes ?? "name email",
+            scope: options.scopes ?? undefined,
             state: options.state ?? undefined,
             nonce: options.nonce ?? undefined,
             usePopup: true,
