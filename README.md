@@ -48,20 +48,21 @@ import {
 registerWebPlugin(SignInWithApple);
 
 let options: SignInWithAppleOptions = {
-  clientId: "com.your.webservice";
-  redirectURI: "https://www.yourfrontend.com/login";
-  scope: "email name";
-  state: "12345";
-}
+  clientId: "com.your.webservice",
+  redirectURI: "https://www.yourfrontend.com/login",
+  scope: "email name",
+  state: "12345",
+  nonce: "nonce",
+};
 
 Plugins.SignInWithApple.authorize(options)
-.then((result: SignInWithAppleResponse) => {
-  // Handle user information
-  // Validate token with server and create new session
-})
-.catch((error) => {
-  // Handle error
-})
+  .then((result: SignInWithAppleResponse) => {
+    // Handle user information
+    // Validate token with server and create new session
+  })
+  .catch((error) => {
+    // Handle error
+  });
 ```
 
 ###
