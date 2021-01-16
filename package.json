@@ -1,6 +1,6 @@
 {
   "name": "@capacitor-community/apple-sign-in",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Capacitor Sign in with Apple",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -14,17 +14,19 @@
   "author": "Max Lynch <max@ionic.io>",
   "license": "MIT",
   "dependencies": {
-    "@capacitor/core": "latest"
+    "@capacitor/core": "latest",
+    "scriptjs": "latest"
   },
   "devDependencies": {
-    "typescript": "^3.2.4",
-    "@capacitor/ios": "latest",
     "@capacitor/android": "latest",
+    "@capacitor/ios": "latest",
     "husky": "^4.2.5",
+    "json-parse-even-better-errors": "latest",
     "np": "^6.2.3",
     "prettier": "^2.0.5",
     "prettier-plugin-java": "^0.8.0",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^2.0.1",
+    "typescript": "^3.2.4"
   },
   "husky": {
     "hooks": {
