@@ -48,7 +48,7 @@ registerWebPlugin(SignInWithApple);
 let options: SignInWithAppleOptions = {
   clientId: "com.your.webservice",
   redirectURI: "https://www.yourfrontend.com/login",
-  scope: "email name",
+  scopes: "email name",
   state: "12345",
   nonce: "nonce",
 };
