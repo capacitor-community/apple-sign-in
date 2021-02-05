@@ -39,7 +39,7 @@ Maintenance Status: Partially Maintained (help wanted)
 import { Plugins } from "@capacitor/core";
 import {
   SignInWithApple,
-  SignInWithApplePluginResponse,
+  SignInWithAppleResponse,
   SignInWithAppleOptions,
 } from "@capacitor-community/apple-sign-in";
 
