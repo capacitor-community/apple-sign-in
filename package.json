@@ -24,7 +24,8 @@
     "np": "^6.2.3",
     "prettier": "^2.0.5",
     "prettier-plugin-java": "^0.8.0",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^2.0.1",
+    "scriptjs": "^2.5.9"
   },
   "husky": {
     "hooks": {
