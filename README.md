@@ -36,7 +36,7 @@ Maintenance Status: Partially Maintained (help wanted)
 ## Usage (iOS, Web)
 
 ```ts
-import { Plugins } from "@capacitor/core";
+import { Plugins, registerWebPlugin } from "@capacitor/core";
 import {
   SignInWithApple,
   SignInWithAppleResponse,
