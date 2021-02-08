@@ -14,7 +14,8 @@
   "author": "Max Lynch <max@ionic.io>",
   "license": "MIT",
   "dependencies": {
-    "@capacitor/core": "latest"
+    "@capacitor/core": "latest",
+    "scriptjs": "^2.5.9"
   },
   "devDependencies": {
     "typescript": "^3.2.4",
@@ -24,8 +25,7 @@
     "np": "^6.2.3",
     "prettier": "^2.0.5",
     "prettier-plugin-java": "^0.8.0",
-    "pretty-quick": "^2.0.1",
-    "scriptjs": "^2.5.9"
+    "pretty-quick": "^2.0.1"
   },
   "husky": {
     "hooks": {
