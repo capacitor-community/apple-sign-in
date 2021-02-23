@@ -1,12 +1,12 @@
 # Capacitor Sign in With Apple
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -26,6 +26,7 @@ Capacitor plugin to support [Sign in With Apple](https://developer.apple.com/sig
 | ---------------------- | ------------------------------------------- | ------------------------------------------- | ------------------ |
 | Max Lynch              | [mlynch](https://github.com/mlynch)         | [@maxlynch](https://twitter.com/maxlynch)   | Ionic              |
 | Jose "Pilito" Martinez | [epicshaggy](https://github.com/epicshaggy) | [@pilito_he](https://twitter.com/pilito_he) |                    |
+| Laszlo Csoka           | [lcsoka](https://github.com/lcsoka)         |                                             |                    |
 
 Maintenance Status: Partially Maintained (help wanted)
 
@@ -36,14 +37,11 @@ Maintenance Status: Partially Maintained (help wanted)
 ## Usage (iOS, Web)
 
 ```ts
-import { Plugins, registerWebPlugin } from "@capacitor/core";
 import {
   SignInWithApple,
   SignInWithAppleResponse,
   SignInWithAppleOptions,
 } from "@capacitor-community/apple-sign-in";
-
-registerWebPlugin(SignInWithApple);
 
 let options: SignInWithAppleOptions = {
   clientId: "com.your.webservice",
@@ -53,7 +51,7 @@ let options: SignInWithAppleOptions = {
   nonce: "nonce",
 };
 
-Plugins.SignInWithApple.authorize(options)
+SignInWithApple.authorize(options)
   .then((result: SignInWithAppleResponse) => {
     // Handle user information
     // Validate token with server and create new session
@@ -67,7 +65,7 @@ Plugins.SignInWithApple.authorize(options)
 
 ## Instructions (Android)
 
-In development.
+Not supported.
 
 ## Contributors ✨
 
@@ -80,6 +78,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://rdlabo.jp"><img src="https://avatars1.githubusercontent.com/u/9690024?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Masahiko Sakakibara</b></sub></a><br /><a href="https://github.com/capacitor-community/apple-sign-in/commits?author=rdlabo" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/epicshaggy"><img src="https://avatars0.githubusercontent.com/u/50883345?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pilito</b></sub></a><br /><a href="https://github.com/capacitor-community/apple-sign-in/commits?author=epicshaggy" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/epicshaggy"><img src="https://avatars.githubusercontent.com/u/9068178?v=4?s=100" width="100px;" alt=""/><br /><sub><b>lcsoka</b></sub></a><br /><a href="https://github.com/capacitor-community/apple-sign-in/commits?author=lcsoka" title="Code">💻</a></td>
   </tr>
 </table>
 

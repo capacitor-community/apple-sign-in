@@ -1,9 +1,3 @@
-declare module "@capacitor/core" {
-  interface PluginRegistry {
-    SignInWithApple: SignInWithApplePlugin;
-  }
-}
-
 export interface SignInWithApplePlugin {
   authorize(options?: SignInWithAppleOptions): Promise<SignInWithAppleResponse>;
 }
@@ -18,7 +12,7 @@ export interface SignInWithAppleOptions {
 
 export interface SignInWithAppleResponse {
   response: {
-    user: string;
+    user: string | null;
     email: string | null;
     givenName: string | null;
     familyName: string | null;
