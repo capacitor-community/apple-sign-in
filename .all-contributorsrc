@@ -23,6 +23,15 @@
         "code"
       ]
     }
+    {
+      "login": "lcsoka",
+      "name": "Laszlo Csoka",
+      "avatar_url": https://avatars.githubusercontent.com/u/9068178?v=4",
+      "profile": "https://github.com/lcsoka",
+      "contributions": [
+        "code"
+      ]
+    },
   ],
   "contributorsPerLine": 7,
   "projectName": "apple-sign-in",

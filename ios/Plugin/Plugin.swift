@@ -19,7 +19,7 @@ public class SignInWithApple: CAPPlugin {
             request.requestedScopes = getRequestedScopes(from: call)
             request.state = call.getString("state")
             request.nonce = call.getString("nonce")
-            
+
             let authorizationController = ASAuthorizationController(authorizationRequests: [request])
             authorizationController.delegate = self
             authorizationController.performRequests()
@@ -27,25 +27,25 @@ public class SignInWithApple: CAPPlugin {
             call.reject("Sign in with Apple is available on iOS 13.0+ only.")
         }
     }
-    
+
     @available(iOS 13.0, *)
     func getRequestedScopes(from call: CAPPluginCall) -> [ASAuthorization.Scope]? {
         var requestedScopes: [ASAuthorization.Scope] = []
-        
+
         if let scopesStr = call.getString("scopes") {
             if scopesStr.contains("name") {
                 requestedScopes.append(.fullName)
             }
-            
+
             if scopesStr.contains("email") {
                 requestedScopes.append(.email)
             }
         }
-        
+
         if requestedScopes.count > 0 {
             return requestedScopes
         }
-        
+
         return nil
     }
 }
@@ -58,7 +58,7 @@ extension SignInWithApple: ASAuthorizationControllerDelegate {
 
             return
         }
-        
+
         let result = [
             "response": [
                 "user": appleIDCredential.user,
