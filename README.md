@@ -1,10 +1,6 @@
 # Capacitor Sign in With Apple
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 
@@ -41,14 +37,14 @@ import {
   SignInWithApple,
   SignInWithAppleResponse,
   SignInWithAppleOptions,
-} from "@capacitor-community/apple-sign-in";
+} from '@capacitor-community/apple-sign-in';
 
 let options: SignInWithAppleOptions = {
-  clientId: "com.your.webservice",
-  redirectURI: "https://www.yourfrontend.com/login",
-  scopes: "email name",
-  state: "12345",
-  nonce: "nonce",
+  clientId: 'com.your.webservice',
+  redirectURI: 'https://www.yourfrontend.com/login',
+  scopes: 'email name',
+  state: '12345',
+  nonce: 'nonce',
 };
 
 SignInWithApple.authorize(options)
@@ -56,7 +52,7 @@ SignInWithApple.authorize(options)
     // Handle user information
     // Validate token with server and create new session
   })
-  .catch((error) => {
+  .catch(error => {
     // Handle error
   });
 ```
