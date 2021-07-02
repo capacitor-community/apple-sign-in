@@ -26,15 +26,15 @@
   "swiftlint": "@ionic/swiftlint-config",
   "license": "MIT",
   "dependencies": {
-    "@capacitor/core": "^3.0.0",
+    "@capacitor/core": "^3.0.2",
     "@types/scriptjs": "0.0.2",
     "scriptjs": "^2.5.9"
   },
   "devDependencies": {
-    "@capacitor/android": "3.0.0",
+    "@capacitor/android": "^3.0.2",
     "@capacitor/cli": "3.0.0",
     "@capacitor/docgen": "0.0.15",
-    "@capacitor/ios": "3.0.0",
+    "@capacitor/ios": "^3.0.2",
     "@ionic/eslint-config": "^0.3.0",
     "@ionic/prettier-config": "^1.0.1",
     "@ionic/swiftlint-config": "^1.1.2",
