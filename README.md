@@ -10,7 +10,7 @@ Capacitor plugin to support [Sign in With Apple](https://developer.apple.com/sig
 
 > ### :rotating_light: This plugin is for Capacitor 3 :rotating_light:
 >
-> Capacitor 2 users can use version 0.1.2.
+> Capacitor 2 users can use version 0.2.0.
 
 <!-- Badges -->
 <a href="https://npmjs.com/package/@capacitor-community/apple-sign-in">
