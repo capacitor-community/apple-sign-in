@@ -1,6 +1,6 @@
 {
   "name": "@capacitor-community/apple-sign-in",
-  "version": "0.0.15",
+  "version": "0.1.2",
   "description": "Capacitor Sign in with Apple",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
