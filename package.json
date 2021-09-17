@@ -19,7 +19,7 @@
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build",
-    "release": "np --any-branch --no-test"
+    "release": "np --any-branch --yolo"
   },
   "author": "Max Lynch <max@ionic.io>",
   "prettier": "@ionic/prettier-config",
