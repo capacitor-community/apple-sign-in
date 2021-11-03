@@ -8,6 +8,7 @@ export interface SignInWithAppleOptions {
   scopes?: string;
   state?: string;
   nonce?: string;
+  usePopup?: boolean;
 }
 
 export interface SignInWithAppleResponse {
