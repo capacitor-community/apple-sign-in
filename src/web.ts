@@ -34,7 +34,7 @@ export class SignInWithAppleWeb
                             scope: options.scopes ?? undefined,
                             state: options.state ?? undefined,
                             nonce: options.nonce ?? undefined,
-                            usePopup: true,
+                            usePopup: options.usePopup ?? true,
                         });
 
                         AppleID.auth
