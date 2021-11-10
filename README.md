@@ -33,6 +33,7 @@ Maintenance Status: Partially Maintained (help wanted)
 ## Installation
 
 - `npm i @capacitor-community/apple-sign-in`
+- `npx cap update`
 
 ## Usage (iOS, Web)
 
