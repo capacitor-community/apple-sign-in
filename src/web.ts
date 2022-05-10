@@ -44,8 +44,8 @@ export class SignInWithAppleWeb
                                     response: {
                                         user: null,
                                         email: res.user?.email,
-                                        givenName: res.user?.name.firstName,
-                                        familyName: res.user?.name.lastName,
+                                        givenName: res.user?.name?.firstName,
+                                        familyName: res.user?.name?.lastName,
                                         identityToken: res.authorization.id_token,
                                         authorizationCode: res.authorization.code,
                                     },
