@@ -16,10 +16,10 @@ public class SignInWithApple: CAPPlugin {
             request.requestedScopes = getRequestedScopes(from: call)
             request.state = call.getString("state")
             request.nonce = call.getString("nonce")
-            
+
             let defaults = UserDefaults()
             defaults.setValue(call.callbackId, forKey: "callbackId")
-            
+
             self.bridge?.saveCall(call)
 
             let authorizationController = ASAuthorizationController(authorizationRequests: [request])
@@ -56,13 +56,13 @@ public class SignInWithApple: CAPPlugin {
 extension SignInWithApple: ASAuthorizationControllerDelegate {
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential else { return }
-        
+
         let defaults = UserDefaults()
         let id = defaults.string(forKey: "callbackId") ?? ""
         guard let call = self.bridge?.savedCall(withID: id) else {
             return
         }
-        
+
         let result = [
             "response": [
                 "user": appleIDCredential.user,
