@@ -7,9 +7,10 @@ ext {
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
+        classpath 'com.google.gms:google-services:4.3.13'
         classpath 'com.android.tools.build:gradle:3.6.1'
     }
 }
@@ -50,3 +51,4 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
 }
+
