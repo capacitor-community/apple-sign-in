@@ -1,6 +1,6 @@
 {
   "name": "@capacitor-community/apple-sign-in",
-  "version": "4.0.0-0",
+  "version": "4.0.0",
   "description": "Capacitor Sign in with Apple",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -30,11 +30,11 @@
     "scriptjs": "^2.5.9"
   },
   "devDependencies": {
-    "@capacitor/android": "^4.0.0",
-    "@capacitor/cli": "^4.0.0",
-    "@capacitor/core": "^4.0.0",
+    "@capacitor/android": "^4.1.0",
+    "@capacitor/cli": "^4.1.0",
+    "@capacitor/core": "^4.1.0",
     "@capacitor/docgen": "0.0.17",
-    "@capacitor/ios": "^4.0.0",
+    "@capacitor/ios": "^4.1.0",
     "@ionic/eslint-config": "^0.3.0",
     "@ionic/prettier-config": "^1.0.1",
     "@ionic/swiftlint-config": "^1.1.2",
@@ -48,7 +48,7 @@
     "typescript": "~4.0.3"
   },
   "peerDependencies": {
-    "@capacitor/core": "^4.0.1"
+    "@capacitor/core": "^4.1.0"
   },
   "eslintConfig": {
     "extends": "@ionic/eslint-config/recommended"
