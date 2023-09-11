@@ -7,7 +7,6 @@ export default {
       name: 'SignInWithApple',
       globals: {
         '@capacitor/core': 'capacitorExports',
-        'scriptjs': 'scriptjs',
       },
       sourcemap: true,
       inlineDynamicImports: true,
