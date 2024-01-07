@@ -84,7 +84,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://rdlabo.jp"><img src="https://avatars1.githubusercontent.com/u/9690024?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Masahiko Sakakibara</b></sub></a><br /><a href="https://github.com/capacitor-community/apple-sign-in/commits?author=rdlabo" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/epicshaggy"><img src="https://avatars0.githubusercontent.com/u/50883345?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pilito</b></sub></a><br /><a href="https://github.com/capacitor-community/apple-sign-in/commits?author=epicshaggy" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/epicshaggy"><img src="https://avatars.githubusercontent.com/u/9068178?v=4?s=100" width="100px;" alt=""/><br /><sub><b>lcsoka</b></sub></a><br /><a href="https://github.com/capacitor-community/apple-sign-in/commits?author=lcsoka" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/lcsoka"><img src="https://avatars.githubusercontent.com/u/9068178?v=4?s=100" width="100px;" alt=""/><br /><sub><b>lcsoka</b></sub></a><br /><a href="https://github.com/capacitor-community/apple-sign-in/commits?author=lcsoka" title="Code">💻</a></td>
   </tr>
 </table>
 
