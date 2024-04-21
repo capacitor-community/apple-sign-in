@@ -30,12 +30,12 @@
     "scriptjs": "^2.5.9"
   },
   "devDependencies": {
-    "@capacitor/android": "^5.0.0",
-    "@capacitor/cli": "^5.0.0",
-    "@capacitor/core": "^5.0.0",
+    "@capacitor/android": "next",
+    "@capacitor/cli": "next",
+    "@capacitor/core": "next",
     "@capacitor/docgen": "0.0.17",
-    "@capacitor/ios": "^5.0.0",
-    "@ionic/eslint-config": "^0.3.0",
+    "@capacitor/ios": "next",
+    "@ionic/eslint-config": "0.3.0",
     "@ionic/prettier-config": "^1.0.1",
     "@ionic/swiftlint-config": "^1.1.2",
     "eslint": "^7.11.0",
@@ -43,12 +43,12 @@
     "prettier": "~2.3.0",
     "prettier-plugin-java": "~1.0.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.32.0",
+    "rollup": "^2.48.0",
     "swiftlint": "^1.0.1",
-    "typescript": "~4.0.3"
+    "typescript": "~4.1.5"
   },
   "peerDependencies": {
-    "@capacitor/core": "^5.0.0"
+    "@capacitor/core": "next"
   },
   "eslintConfig": {
     "extends": "@ionic/eslint-config/recommended"
