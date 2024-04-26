@@ -19,7 +19,7 @@
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build",
-    "release": "np --any-branch --yolo"
+    "release": "commit-and-tag-version"
   },
   "author": "Max Lynch <max@ionic.io>",
   "prettier": "@ionic/prettier-config",
@@ -38,8 +38,8 @@
     "@ionic/eslint-config": "^0.3.0",
     "@ionic/prettier-config": "^1.0.1",
     "@ionic/swiftlint-config": "^1.1.2",
+    "commit-and-tag-version": "^12.4.0",
     "eslint": "^7.11.0",
-    "np": "^7.4.0",
     "prettier": "~2.3.0",
     "prettier-plugin-java": "~1.0.2",
     "rimraf": "^3.0.2",
