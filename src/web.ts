@@ -1,5 +1,4 @@
 import { WebPlugin } from '@capacitor/core';
-import * as $script from 'scriptjs';
 
 import type {
   SignInWithAppleOptions,
@@ -75,7 +74,19 @@ export class SignInWithAppleWeb
     return new Promise(resolve => {
       if (!this.isAppleScriptLoaded) {
         if (typeof window !== undefined) {
-          $script.get(this.appleScriptUrl, () => resolve(true));
+          if (!document.getElementById('capacitor-community__apple-sign-in__script')) {
+            const script = document.createElement('script');
+            script.id = 'capacitor-community__apple-sign-in__script';
+            script.async = true;
+            script.src = this.appleScriptUrl;
+            script.onload = script.onerror = () => {
+                script.onload = null;
+                resolve(true);
+            };
+            document.head.insertBefore(script, document.head.lastChild);
+          } else {
+            resolve(true);
+          }
         } else {
           resolve(false);
         }
