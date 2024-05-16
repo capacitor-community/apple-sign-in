@@ -25,10 +25,7 @@
   "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",
   "license": "MIT",
-  "dependencies": {
-    "@types/scriptjs": "0.0.2",
-    "scriptjs": "^2.5.9"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@capacitor/android": "^6.0.0",
     "@capacitor/cli": "^6.0.0",
