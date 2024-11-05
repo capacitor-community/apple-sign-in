@@ -6,10 +6,10 @@ import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
 
-@CapacitorPlugin(name = "Echo")
+@CapacitorPlugin
 public class SignInWithApple extends Plugin {
 
-    @PluginMethod()
+    @PluginMethod
     public void echo(PluginCall call) {
         String value = call.getString("value");
 
