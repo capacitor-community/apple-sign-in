@@ -8,8 +8,10 @@
 
 Capacitor plugin to support [Sign in With Apple](https://developer.apple.com/sign-in-with-apple/get-started/)
 
-> ### :rotating_light: This plugin is for Capacitor 5 :rotating_light:
+> ### :rotating_light: This plugin is for Capacitor 6 :rotating_light:
 >
+>
+> Capacitor 5 users can use version 5.x
 >
 > Capacitor 4 users can use version 4.x
 >
