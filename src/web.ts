@@ -17,13 +17,6 @@ export class SignInWithAppleWeb
     'https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js';
   private isAppleScriptLoaded = false;
 
-  constructor() {
-    super({
-      name: 'SignInWithApple',
-      platforms: ['web'],
-    });
-  }
-
   async authorize(
     options?: SignInWithAppleOptions,
   ): Promise<SignInWithAppleResponse> {
