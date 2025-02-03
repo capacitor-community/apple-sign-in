@@ -1,28 +1,18 @@
 import { WebPlugin } from '@capacitor/core';
 import * as $script from 'scriptjs';
 
-import type {
-  SignInWithAppleOptions,
-  SignInWithApplePlugin,
-  SignInWithAppleResponse,
-} from './definitions';
+import type { SignInWithAppleOptions, SignInWithApplePlugin, SignInWithAppleResponse } from './definitions';
 
 declare let AppleID: any;
 
-export class SignInWithAppleWeb
-  extends WebPlugin
-  implements SignInWithApplePlugin
-{
-  private appleScriptUrl =
-    'https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js';
+export class SignInWithAppleWeb extends WebPlugin implements SignInWithApplePlugin {
+  private appleScriptUrl = 'https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js';
   private isAppleScriptLoaded = false;
 
-  async authorize(
-    options?: SignInWithAppleOptions,
-  ): Promise<SignInWithAppleResponse> {
+  async authorize(options?: SignInWithAppleOptions): Promise<SignInWithAppleResponse> {
     return new Promise((resolve, reject) => {
       if (options) {
-        this.loadSignInWithAppleJS().then(loaded => {
+        this.loadSignInWithAppleJS().then((loaded) => {
           this.isAppleScriptLoaded = loaded;
 
           if (this.isAppleScriptLoaded) {
@@ -65,7 +55,7 @@ export class SignInWithAppleWeb
   }
 
   private loadSignInWithAppleJS(): Promise<boolean> {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       if (!this.isAppleScriptLoaded) {
         if (typeof window !== undefined) {
           $script.get(this.appleScriptUrl, () => resolve(true));
