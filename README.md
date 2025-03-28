@@ -8,15 +8,6 @@
 
 Capacitor plugin to support [Sign in With Apple](https://developer.apple.com/sign-in-with-apple/get-started/)
 
-> ### :rotating_light: This plugin is for Capacitor 5 :rotating_light:
->
->
-> Capacitor 4 users can use version 4.x
->
-> Capacitor 3 users can use version 1.x
->
-> Capacitor 2 users can use version 0.2.0
-
 <!-- Badges -->
 <a href="https://npmjs.com/package/@capacitor-community/apple-sign-in">
   <img src="https://img.shields.io/npm/v/@capacitor-community/apple-sign-in.svg">
