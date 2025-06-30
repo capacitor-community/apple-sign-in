@@ -24,7 +24,7 @@ import {
   SignInWithAppleOptions,
 } from '@capacitor-community/apple-sign-in';
 
-let options: SignInWithAppleOptions = {
+const options: SignInWithAppleOptions = {
   clientId: 'com.your.webservice',
   redirectURI: 'https://www.yourfrontend.com/login',
   scopes: 'email name',
