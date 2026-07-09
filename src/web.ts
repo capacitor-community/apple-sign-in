@@ -36,6 +36,7 @@ export class SignInWithAppleWeb extends WebPlugin implements SignInWithApplePlug
                     familyName: res.user?.name?.lastName,
                     identityToken: res.authorization.id_token,
                     authorizationCode: res.authorization.code,
+                    state: res.authorization.state ?? null,
                   },
                 };
 
@@ -57,7 +58,7 @@ export class SignInWithAppleWeb extends WebPlugin implements SignInWithApplePlug
   private loadSignInWithAppleJS(): Promise<boolean> {
     return new Promise((resolve) => {
       if (!this.isAppleScriptLoaded) {
-        if (typeof window !== undefined) {
+        if (typeof window !== 'undefined') {
           $script.get(this.appleScriptUrl, () => resolve(true));
         } else {
           resolve(false);
