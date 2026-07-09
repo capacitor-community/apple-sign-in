@@ -8,7 +8,9 @@ public class SignInWithApple: CAPPlugin, CAPBridgedPlugin {
     public let jsName = "SignInWithApple" 
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "authorize", returnType: CAPPluginReturnPromise),
-    ] 
+    ]
+
+    private var pendingCallbackIds: [ObjectIdentifier: String] = [:]
 
     @objc func authorize(_ call: CAPPluginCall) {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
@@ -17,13 +19,11 @@ public class SignInWithApple: CAPPlugin, CAPBridgedPlugin {
         request.state = call.getString("state")
         request.nonce = call.getString("nonce")
 
-        let defaults = UserDefaults()
-        defaults.setValue(call.callbackId, forKey: "callbackId")
-
         self.bridge?.saveCall(call)
 
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
+        pendingCallbackIds[ObjectIdentifier(authorizationController)] = call.callbackId
         authorizationController.performRequests()
     }
 
@@ -52,9 +52,7 @@ extension SignInWithApple: ASAuthorizationControllerDelegate {
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential else { return }
 
-        let defaults = UserDefaults()
-        let id = defaults.string(forKey: "callbackId") ?? ""
-        guard let call = self.bridge?.savedCall(withID: id) else {
+        guard let id = pendingCallbackIds.removeValue(forKey: ObjectIdentifier(controller)), let call = self.bridge?.savedCall(withID: id) else {
             return
         }
 
@@ -65,7 +63,8 @@ extension SignInWithApple: ASAuthorizationControllerDelegate {
                 "givenName": appleIDCredential.fullName?.givenName,
                 "familyName": appleIDCredential.fullName?.familyName,
                 "identityToken": String(data: appleIDCredential.identityToken!, encoding: .utf8),
-                "authorizationCode": String(data: appleIDCredential.authorizationCode!, encoding: .utf8)
+                "authorizationCode": String(data: appleIDCredential.authorizationCode!, encoding: .utf8),
+                "state": appleIDCredential.state
             ]
         ]
 
@@ -74,9 +73,7 @@ extension SignInWithApple: ASAuthorizationControllerDelegate {
     }
 
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        let defaults = UserDefaults()
-        let id = defaults.string(forKey: "callbackId") ?? ""
-        guard let call = self.bridge?.savedCall(withID: id) else {
+        guard let id = pendingCallbackIds.removeValue(forKey: ObjectIdentifier(controller)), let call = self.bridge?.savedCall(withID: id) else {
             return
         }
         call.reject(error.localizedDescription)
